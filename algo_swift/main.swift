@@ -5,17 +5,19 @@ var inputs = Array(readLine()!)
 var rear = 0
 var end = 0
 
-OUTER : for i in 0..<inputs.count {
+for i in 0..<inputs.count {
     if(inputs[i] == " ") {
         rear += 1
     } else {
-        for j in (0..<inputs.count).reversed() {
-            if(inputs[j] == " ") {
-                end += 1
-            } else {
-                break OUTER
-            }
-        }
+        break
+    }
+}
+
+for j in (0..<inputs.count).reversed() {
+    if(inputs[j] == " ") {
+        end += 1
+    } else {
+        break
     }
 }
 
