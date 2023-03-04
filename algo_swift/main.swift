@@ -1,28 +1,41 @@
 import Foundation
 
-let inputs = readLine()!.split(separator: " ").map { Int($0)! }
+var inputs = Array(readLine()!)
 
-let m = inputs[0]
-let n = inputs[1]
+var rear = 0
+var end = 0
 
-for i in m...n {
-    if(i % 2 == 0 || i == 1) {
-        continue
+OUTER : for i in 0..<inputs.count {
+    if(inputs[i] == " ") {
+        rear += 1
     } else {
-        var start = 3
-        let end = Int(sqrt(Double(i)))
-        
-        while(true) {
-            if(start <= end) {
-                if(i % start == 0) {
-                    break
-                } else {
-                    start += 1
-                }
+        for j in (0..<inputs.count).reversed() {
+            if(inputs[j] == " ") {
+                end += 1
             } else {
-                print("\(i)")
-                break
+                break OUTER
             }
         }
     }
 }
+
+if (rear != 0) {
+    for _ in 0..<rear {
+        inputs.removeFirst()
+    }
+}
+
+if (end != 0) {
+    for _ in 0..<end {
+        inputs.removeLast()
+    }
+}
+
+var ans = 0
+for k in 0..<inputs.count {
+    if( inputs[k] == " ") {
+        ans += 1
+    }
+}
+
+print(ans + 1)
