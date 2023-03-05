@@ -1,46 +1,23 @@
-// split 은 Foundation 없이 쓸 수 있음.
-var inputs = readLine()!.split(separator: " ")
-print(inputs.count)
+import Foundation
 
-// import Foundation
-//var inputs = Array(readLine()!)
-//
-//var rear = 0
-//var end = 0
-//
-//for i in 0..<inputs.count {
-//    if(inputs[i] == " ") {
-//        rear += 1
-//    } else {
-//        break
-//    }
-//}
-//
-//for j in (0..<inputs.count).reversed() {
-//    if(inputs[j] == " ") {
-//        end += 1
-//    } else {
-//        break
-//    }
-//}
-//
-//if (rear != 0) {
-//    for _ in 0..<rear {
-//        inputs.removeFirst()
-//    }
-//}
-//
-//if (end != 0) {
-//    for _ in 0..<end {
-//        inputs.removeLast()
-//    }
-//}
-//
-//var ans = 0
-//for k in 0..<inputs.count {
-//    if( inputs[k] == " ") {
-//        ans += 1
-//    }
-//}
-//
-//print(ans + 1)
+var arr : [[Int]] = []
+var maxValue = 0
+var x = 0
+var y = 0
+
+for _ in stride(from: 0, to: 9, by: 1) {
+  arr.append(readLine()!.split(separator: " ").map { Int(String($0))! })
+}
+
+for i in 0..<arr.count {
+    for j in 0..<arr.count {
+        if(arr[i][j] > maxValue) {
+            x = i
+            y = j
+            maxValue = arr[i][j]
+        }
+    }
+}
+
+print(maxValue)
+print("\(x+1) \(y+1)")
