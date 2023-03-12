@@ -1,10 +1,19 @@
 import Foundation
 
-var answers = [Int]()
+let input = Array(readLine()!)
+var ans = true
 
-for _ in 1...10 {
-    let inputs = Int(readLine()!)!
-    answers.append(inputs % 42)
+for i in 0..<(input.count/2) {
+            if(input[i] == input[input.count - i - 1]) {
+                continue
+            } else {
+                ans = false
+                break
+            }
 }
 
-print(Set(answers.map{$0}).count)
+if(ans) {
+    print("1")
+} else {
+    print("0")
+}
